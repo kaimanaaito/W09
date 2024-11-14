@@ -15,27 +15,32 @@ body {
 }
 
 .card {
+    display: flex;
+    flex-direction: column; /* Flexboxの縦方向レイアウト */
     width: 100%; /* Set width to 100% initially */
-    max-width: 350px; /* Maximum width for larger mobile devices */
+    max-width: 280px; /* 横幅を少し縮める */
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 550px; /* 高さを増やして縦長にする */
 }
 
 .card-header {
     position: relative;
+    height: 250px; /* ヘッダーの高さを増やす */
 }
 
 .card-image {
     width: 100%;
-    height: 200px; /* Increased height for a taller look */
+    height: 100%; /* ヘッダーの高さに合わせて画像の高さも調整 */
     object-fit: cover;
 }
 
 .card-body {
     padding: 20px;
     text-align: center;
+    flex-grow: 1; /* カード内で自動的に高さを調整 */
 }
 
 .date {
@@ -64,12 +69,16 @@ body {
     color: white;
     font-size: 14px;
     border-top: 1px solid #757575;
+    flex-shrink: 0; /* フッターが縮まないように */
 }
 
 .footer-item {
     text-align: center;
     flex: 1;
     position: relative;
+    display: flex; /* Flexboxを使って縦に並べる */
+    flex-direction: column;
+    justify-content: center;
 }
 
 .footer-item:not(:last-child)::after {
@@ -83,14 +92,24 @@ body {
 }
 
 .footer-item span {
-    font-weight: bold;
+    font-weight: normal; /* 数字を太字にしない */
+    display: inline; /* `span`は横並びにする */
+}
+
+.footer-item sup {
+    font-size: 0.8em; /* `sup`の文字サイズを小さくして調整 */
+}
+
+.footer-item span,
+.footer-item sup {
+    display: inline; /* `span`と`sup`を横並びにする */
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
     .card {
         width: 100%;
-        max-width: 320px; /* Slightly narrower on smaller screens */
+        max-width: 260px; /* 更に縮める */
     }
 
     .post-title {
@@ -105,6 +124,3 @@ body {
         padding: 10px 0;
     }
 }
-
-
-
